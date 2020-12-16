@@ -1,8 +1,9 @@
+require("dotenv").config();
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const cors = require("cors");
-require("dotenv").config();
+const listEndpoints = require("express-list-endpoints");
 const colors = require("colors/safe");
 const { connectDB } = require("./models");
 
@@ -29,7 +30,16 @@ app.get("/", (req, res) => {
     ? req.session.requestCount + 1
     : 1;
   res.send(
-    `🐦 api-gen API running, ${req.session.requestCount} requests made this session`
+    `🐦 api-gen API running, ${
+      req.session.requestCount
+    } requests made this session. 
+    
+    ${listEndpoints(app)
+      .map(
+        (a) =>
+          `<a href="http://localhost:4000${a.path}" >http://localhost:4000${a.path}</a>`
+      )
+      .join("\n")}`
   );
 });
 

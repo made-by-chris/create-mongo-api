@@ -55,13 +55,12 @@ generates a project folder called <PROJECTNAME>
     }
     try {
       writeFileSync(`./${name}/package.json`, pkg(name));
-      console.log(process.cwd());
       // create base files
       // copyFolderRecursiveSync("./templates/start", `${name}`);
       copydir.sync("./templates/start", `${name}`);
       process.chdir(`./${name}`);
       execSync(
-        `npm install express mongoose cors colors`,
+        `npm install express mongoose cors colors express-list-endpoints`,
         (error: Error, stdout: string, stderr: Error) => {
           if (error) {
             console.error(`exec error: ${error}`);
@@ -89,12 +88,12 @@ generates a project folder called <PROJECTNAME>
       console.log(colors.green.underline(`🐦 cd ${name}`));
       console.log(colors.green.underline(`🐦 npm run dev`));
       console.log(
-        colors.red.underline(
+        colors.green.underline(
           `🐦 ADD YOUR CONNECTION_URI TO .env TO CONNECT TO MONGODB`
         )
       );
       console.log(
-        colors.red.underline(
+        colors.green.underline(
           `🐦 AFTER EDITING .env, YOU'LL NEED TO RESTART THE API IF YOU ALREADY STARTED IT`
         )
       );

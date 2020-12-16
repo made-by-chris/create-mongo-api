@@ -12,7 +12,7 @@ const routes = (type: string) => {
 app.route("/${type.toLowerCase() + "s"}/:id")
 .get(get${type}ById)
 .put(update${type})
-.delete(delete${type})\n`;
+.delete(delete${type});\n`;
 };
 
 const controllerFile = (type: string) => {
