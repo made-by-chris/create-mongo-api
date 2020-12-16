@@ -24,10 +24,10 @@ const pkg = (name: string) => {
 };
 
 export default class Start extends Command {
-  static description = "generates an api_gen project";
+  static description = "generates an gen-api project";
 
   static examples = [
-    `$ api_gen start <PROJECTNAME>
+    `$ gen-api start <PROJECTNAME>
 generates a project folder called <PROJECTNAME>
 `,
   ];
@@ -44,7 +44,7 @@ generates a project folder called <PROJECTNAME>
 
   async generateProject(name: string) {
     this.log(
-      colors.green.underline(`🐦 api_gen making API project called "${name}"`)
+      colors.green.underline(`🐦 gen-api making API project called "${name}"`)
     );
     try {
       execSync(`mkdir ${name}`);
@@ -83,7 +83,7 @@ generates a project folder called <PROJECTNAME>
         }
       );
       console.log(
-        colors.green.underline(`🐦 api_gen API "${name}" setup complete`)
+        colors.green.underline(`🐦 gen-api API "${name}" setup complete`)
       );
       console.log(colors.green.underline(`🐦 cd ${name}`));
       console.log(colors.green.underline(`🐦 npm run dev`));
@@ -104,7 +104,7 @@ generates a project folder called <PROJECTNAME>
 
   async run() {
     const { args, flags } = this.parse(Start);
-    const name = process.argv[3] ?? "api_gen-project";
+    const name = process.argv[3] ?? "gen-api-project";
     this.generateProject(name);
     if (args.file && flags.force) {
       this.log(`you input --force and --file: ${args.file}`);

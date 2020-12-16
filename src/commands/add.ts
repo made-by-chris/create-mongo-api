@@ -82,10 +82,10 @@ const modelExport = (type: string) => {
   return `exports.${type} = ${type};`;
 };
 export default class Add extends Command {
-  static description = "generates an api_gen project";
+  static description = "generates an gen-api project";
 
   static examples = [
-    `$ api_gen start <PROJECTNAME>
+    `$ gen-api start <PROJECTNAME>
 generates a project folder called <PROJECTNAME>
 `,
   ];
@@ -115,7 +115,7 @@ generates a project folder called <PROJECTNAME>
 
     this.log(
       colors.green.underline(
-        `🐦 api_gen adding new "${type}" imports and routes to index.js`
+        `🐦 gen-api adding new "${type}" imports and routes to index.js`
       )
     );
     try {
@@ -152,7 +152,7 @@ generates a project folder called <PROJECTNAME>
 
     this.log(
       colors.green.underline(
-        `🐦 api_gen adding new controllers to controllers/${type}.js`
+        `🐦 gen-api adding new controllers to controllers/${type}.js`
       )
     );
     try {
@@ -166,7 +166,7 @@ generates a project folder called <PROJECTNAME>
 
     this.log(
       colors.green.underline(
-        `🐦 api_gen adding new model to models/${type}.js and models/index.js`
+        `🐦 gen-api adding new model to models/${type}.js and models/index.js`
       )
     );
 

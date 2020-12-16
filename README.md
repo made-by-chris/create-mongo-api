@@ -1,16 +1,16 @@
-# 🐦 api_gen
+# 🐦 gen-api
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/api_gen.svg)](https://npmjs.org/package/api_gen)
-[![Downloads/week](https://img.shields.io/npm/dw/api_gen.svg)](https://npmjs.org/package/api_gen)
-[![License](https://img.shields.io/npm/l/api_gen.svg)](https://github.com/basiclaser/api_gen/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/gen-api.svg)](https://npmjs.org/package/gen-api)
+[![Downloads/week](https://img.shields.io/npm/dw/gen-api.svg)](https://npmjs.org/package/gen-api)
+[![License](https://img.shields.io/npm/l/gen-api.svg)](https://github.com/basiclaser/gen-api/blob/master/package.json)
 
 <!-- toc -->
 
 Generate Express & Mongo APIs, with easy-to-use example controller & model code.
 
 - Common middlewares are included ( cors, cookieParser, bodyParser, express-session ).
-- Relatively simple structure is used (no sub-router files or views included).
+- Relatively simple structure is used ( no sub-routers or views ).
 
 ---
 
@@ -18,20 +18,31 @@ Generate Express & Mongo APIs, with easy-to-use example controller & model code.
 - [Commands](#commands)
 <!-- tocstop -->
 
-# Usage
+# quickstart
 
 <!-- usage -->
 
 ```sh-session
-$ npm install -g api_gen
-$ api_gen COMMAND
-running command...
-$ api_gen (-v|--version|version)
-api_gen/0.0.0 darwin-x64 node-v12.19.0
-$ api_gen --help [COMMAND]
-USAGE
-  $ api_gen COMMAND
-...
+$ npx gen-api start myProject
+🐦 gen-api making API project called "myProject"...
+
+$ cd myProject
+$ npx gen-api add message
+🐦 gen-api adding new "Message" imports and routes to index.js
+🐦 gen-api adding new controllers to controllers/Message.js
+🐦 gen-api adding new model to models/Message.js and models/index.js
+
+(you need to add your CONNECTION_URI from mongodb atlas to the .env file now)
+
+$npm run dev
+🐦 gen-api API running at http://localhost:4000
+
+$ npx gen-api add user
+🐦 gen-api adding new "User" imports and routes to index.js
+🐦 gen-api adding new controllers to controllers/User.js
+🐦 gen-api adding new model to models/User.js and models/index.js
+
+..that's it!
 ```
 
 <!-- usagestop -->
@@ -40,36 +51,49 @@ USAGE
 
 <!-- commands -->
 
-- [`api_gen hello [FILE]`](#api_gen-hello-file)
-- [`api_gen help [COMMAND]`](#api_gen-help-command)
+- [`gen-api start [PROJECTNAME]`](#gen-api-start)
+- [`gen-api add TYPENAME`](#gen-api-add)
+- [`gen-api help [COMMAND]`](#gen-api-help-command)
 
-## `api_gen hello [FILE]`
+## `gen-api start [PROJECTNAME]`
 
-describe the command here
+creates a new API project in a folder with the name you specify.
 
 ```
 USAGE
-  $ api_gen hello [FILE]
-
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+  $ gen-api start <PROJECTNAME>
 
 EXAMPLE
-  $ api_gen hello
-  hello world from ./src/hello.ts!
+  $ npx gen-api start myProject
+🐦 gen-api making API project called "myProject"
 ```
 
-_See code: [src/commands/hello.ts](https://github.com/basiclaser/api_gen/blob/v0.0.0/src/commands/hello.ts)_
+_See code: [src/commands/start.ts](https://github.com/basiclaser/gen-api/blob/v0.0.0/src/commands/start.ts)_
 
-## `api_gen help [COMMAND]`
+## `gen-api add <TYPENAME>`
 
-display help for api_gen
+creates new routes, controllers and a model with the name you specify.
 
 ```
 USAGE
-  $ api_gen help [COMMAND]
+  $ gen-api add <TYPENAME>
+
+EXAMPLE
+  $ npx gen-api add product
+🐦 gen-api adding new "Product" imports and routes to index.js
+🐦 gen-api adding new controllers to controllers/Product.js
+🐦 gen-api adding new model to models/Product.js and models/index.js
+```
+
+_See code: [src/commands/start.ts](https://github.com/basiclaser/gen-api/blob/v0.0.0/src/commands/add.ts)_
+
+## `gen-api help [COMMAND]`
+
+display help for gen-api
+
+```
+USAGE
+  $ gen-api help [COMMAND]
 
 ARGUMENTS
   COMMAND  command to show help for
@@ -82,22 +106,8 @@ _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.1
 
 <!-- commandsstop -->
 
-## todo
-
-commands... hmm
-
-api_gen generates quick and dirty [MVC] project files, full of standard ExpressJS and Mongoose CRUD for you to quickly make use of.
-
-`api_gen start <PROJECTNAME>`
-eg. `api_gen start myProject`
-create a simple boilerplate api with whichever name you specify.
-
-`api_gen add <TYPENAME>`
-eg. `api_gen add User`
-create a simple boilerplate api with whichever of the MVC components you specify. The controllers & models are stuffed with CRUD.
-
 TODO: auth
-`api_gen auth`
+`gen-api auth`
 generates basic auth solution, user models, /register, /login, /logout, /profile routes and controllers
 
 TODO: postgreSQL
