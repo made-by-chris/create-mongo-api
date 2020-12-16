@@ -1,3 +1,99 @@
+import { Command, flags } from "@oclif/command";
+var colors = require("colors/safe");
+import { readFileSync, writeFileSync } from "fs";
+
+const imports = `const {
+  createUser,
+  getUser,
+  loginUser,
+  logoutUser,
+} = require("./controllers/user");
+`;
+const routes = ``;
+
+const model = (type = "user") => `
+const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
+
+var ${type}Schema = new mongoose.Schema({
+  email: {
+    type: String,
+    unique: true,
+    required: true,
+    trim: true,
+  },
+  name: {
+    type: String,
+    required: true,
+    trim: true,
+  },
+  password: {
+    type: String,
+    required: true,
+  },
+});
+
+${type}Schema.pre("save", function (next) {
+  var ${type} = this;
+  bcrypt.hash(${type}.password, 10, function (err, hash) {
+    if (err) {
+      return next(err);
+    }
+    ${type}.password = hash;
+    next();
+  });
+});
+
+${type}Schema.statics.authenticate = function (email, password, callback) {
+  ${type}.findOne({ email: email }).exec(function (err, ${type}) {
+    if (err) {
+      return callback(err);
+    } else if (!${type}) {
+      var err = new Error("${type} not found.");
+      err.status = 401;
+      return callback(err);
+    }
+    bcrypt.compare(password, ${type}.password, function (err, result) {
+      if (err) {
+        return callback(err);
+      }
+      if (result === true) {
+        return callback(null, ${type});
+      } else {
+        return callback();
+      }
+    });
+  });
+};
+
+const ${type} = mongoose.model("${type}", ${type}Schema);
+
+module.exports = ${type};
+`;
+// import controllers to index.js
+// add routes to index.js
+// make controllers/bla.js
+// make models/bla.js
+// update models/index.js
+// update models/index.js
+
+export default class Auth extends Command {
+  static description = `generates basic auth solution, user models, /register, /login, /logout, /profile routes and controllers`;
+
+  static examples = [
+    `$ api-make auth customer
+generates a Customer model with routes and controllers
+`,
+  ];
+
+  static args = [{ name: "collectionName" }];
+
+  async run() {
+    const { args, flags } = this.parse(Auth);
+    let type = process.argv[3];
+  }
+}
+
 var colors = require("colors/safe");
 import { readFileSync, writeFileSync } from "fs";
 
@@ -187,13 +283,3 @@ const createTypeRecursive = async (remaining: Array<string>) => {
     console.log(colors.red.underline("failed to update models/index.js"));
   }
 };
-
-const createTypes = async (args: Record<string, any>) => {
-  const typesToMake = Object.keys(args)
-    .filter((key) => key !== "projectname")
-    .filter((key) => args[key])
-    .map((key) => args[key]);
-  createTypeRecursive(typesToMake);
-};
-
-export default createTypes;

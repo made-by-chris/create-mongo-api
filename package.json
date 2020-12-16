@@ -1,11 +1,11 @@
 {
-  "name": "api-chunk",
-  "version": "1.0.2",
+  "name": "api-make",
+  "version": "1.0.1",
   "author": "Christopher Shelley @basiclaser",
   "bin": {
-    "api-chunk": "./bin/run"
+    "api-make": "./bin/run"
   },
-  "bugs": "https://github.com/basiclaser/api-chunk/issues",
+  "bugs": "https://github.com/basiclaser/api-make/issues",
   "dependencies": {
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
@@ -39,7 +39,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/basiclaser/api-chunk",
+  "homepage": "https://github.com/basiclaser/api-make",
   "keywords": [
     "api",
     "generator",
@@ -52,12 +52,12 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "api-chunk",
+    "bin": "api-make",
     "plugins": [
       "@oclif/plugin-help"
     ]
   },
-  "repository": "basiclaser/api-chunk",
+  "repository": "basiclaser/api-make",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",

@@ -25,11 +25,11 @@ const pkg = (name: string) => {
 }`;
 };
 
-export default class Start extends Command {
-  static description = "generates a blank api-chunk project";
+export default class Init extends Command {
+  static description = "generates a blank api-make project";
 
   static examples = [
-    `$ api-chunk start <PROJECTNAME>
+    `$ api-make init <PROJECTNAME>
 generates a project folder called <PROJECTNAME>
 `,
   ];
@@ -52,11 +52,11 @@ generates a project folder called <PROJECTNAME>
   ];
 
   async generateProject() {
-    const { args } = this.parse(Start);
-    const name = args.projectname || "api-chunk-project";
+    const { args } = this.parse(Init);
+    const name = args.projectname || "api-make-project";
 
     this.log(
-      colors.green.underline(`api-chunk making API project called "${name}"`)
+      colors.green.underline(`api-make making API project called "${name}"`)
     );
     try {
       execSync(`mkdir ${name}`);
@@ -102,7 +102,7 @@ generates a project folder called <PROJECTNAME>
         }
       );
       await createTypes(args);
-      console.log(colors.green.underline(`api-chunk "${name}" setup complete`));
+      console.log(colors.green.underline(`api-make "${name}" setup complete`));
       console.log(colors.green.inverse(`cd ${name}`));
       console.log(colors.green.inverse(`npm run dev`));
     } catch (err) {

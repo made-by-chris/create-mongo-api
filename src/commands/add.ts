@@ -5,10 +5,10 @@ import createTypes from "../utils/create-types";
 
 export default class Add extends Command {
   static description = `generate new routes, controllers and a model by specifying a 'type'
-eg. \`api-chunk add event\``;
+eg. \`api-make add event\``;
 
   static examples = [
-    `$ api-chunk add message
+    `$ api-make add message
 generates a Message model with routes and controllers
 `,
   ];

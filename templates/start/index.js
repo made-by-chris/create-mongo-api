@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
     ? req.session.requestCount + 1
     : 1;
   res.send(
-    `api-chunk API running, ${
+    `api-make API running, ${
       req.session.requestCount
     } requests made this session. 
 
@@ -47,7 +47,7 @@ app.get("/", (req, res) => {
   await connectDB();
   app.listen(PORT, () =>
     console.log(
-      colors.green.inverse(`api-chunk API running at http://localhost:${PORT}`)
+      colors.green.inverse(`api-make API running at http://localhost:${PORT}`)
     )
   );
 })();

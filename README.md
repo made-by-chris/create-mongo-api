@@ -1,64 +1,68 @@
-# api-chunk
+# api-make
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/api-chunk.svg)](https://npmjs.org/package/api-chunk)
-[![Downloads/week](https://img.shields.io/npm/dw/api-chunk.svg)](https://npmjs.org/package/api-chunk)
-[![License](https://img.shields.io/npm/l/api-chunk.svg)](https://github.com/basiclaser/api-chunk/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/api-make.svg)](https://npmjs.org/package/api-make)
+[![Downloads/week](https://img.shields.io/npm/dw/api-make.svg)](https://npmjs.org/package/api-make)
+[![License](https://img.shields.io/npm/l/api-make.svg)](https://github.com/basiclaser/api-make/blob/master/package.json)
 
 <!-- toc -->
-* [api-chunk](#api-chunk)
-* [quickstart](#quickstart)
-* [Commands](#commands)
+
+- [api-make](#api-make)
+- [quickstart](#quickstart)
+- [Commands](#commands)
 <!-- tocstop -->
 
 # quickstart
 
 <!-- usage -->
+
 ```sh-session
-$ npm install -g api-chunk
-$ api-chunk COMMAND
+$ npm install -g api-make
+$ api-make COMMAND
 running command...
-$ api-chunk (-v|--version|version)
-api-chunk/1.0.2 darwin-x64 node-v12.19.0
-$ api-chunk --help [COMMAND]
+$ api-make (-v|--version|version)
+api-make/1.0.3 darwin-x64 node-v12.19.0
+$ api-make --help [COMMAND]
 USAGE
-  $ api-chunk COMMAND
+  $ api-make COMMAND
 ...
 ```
+
 <!-- usagestop -->
 
 # Commands
 
 <!-- commands -->
-* [`api-chunk add [TYPE]`](#api-chunk-add-type)
-* [`api-chunk help [COMMAND]`](#api-chunk-help-command)
-* [`api-chunk start [PROJECTNAME]`](#api-chunk-start-projectname)
 
-## `api-chunk add [TYPE]`
+- [`api-make add [COLLECTION1] [COLLECTION2] [COLLECTION3] [COLLECTION4] [COLLECTION5]`](#api-make-add-collection1-collection2-collection3-collection4-collection5)
+- [`api-make help [COMMAND]`](#api-make-help-command)
+- [`api-make start [PROJECTNAME] [COLLECTION1] [COLLECTION2] [COLLECTION3] [COLLECTION4] [COLLECTION5]`](#api-make-start-projectname-collection1-collection2-collection3-collection4-collection5)
+
+## `api-make add [COLLECTION1] [COLLECTION2] [COLLECTION3] [COLLECTION4] [COLLECTION5]`
 
 generate new routes, controllers and a model by specifying a 'type'
 
 ```
 USAGE
-  $ api-chunk add [TYPE]
+  $ api-make add [COLLECTION1] [COLLECTION2] [COLLECTION3] [COLLECTION4] [COLLECTION5]
 
 DESCRIPTION
-  eg. `api-chunk add event`
+  eg. `api-make add event`
 
 EXAMPLE
-  $ api-chunk add message
+  $ api-make add message
   generates a Message model with routes and controllers
 ```
 
-_See code: [src/commands/add.ts](https://github.com/basiclaser/api-chunk/blob/v1.0.2/src/commands/add.ts)_
+_See code: [src/commands/add.ts](https://github.com/basiclaser/api-make/blob/v1.0.3/src/commands/add.ts)_
 
-## `api-chunk help [COMMAND]`
+## `api-make help [COMMAND]`
 
-display help for api-chunk
+display help for api-make
 
 ```
 USAGE
-  $ api-chunk help [COMMAND]
+  $ api-make help [COMMAND]
 
 ARGUMENTS
   COMMAND  command to show help for
@@ -69,13 +73,13 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.1/src/commands/help.ts)_
 
-## `api-chunk start [PROJECTNAME]`
+## `api-make start [PROJECTNAME] [COLLECTION1] [COLLECTION2] [COLLECTION3] [COLLECTION4] [COLLECTION5]`
 
-generates a blank api-chunk project
+generates a blank api-make project
 
 ```
 USAGE
-  $ api-chunk start [PROJECTNAME]
+  $ api-make start [PROJECTNAME] [COLLECTION1] [COLLECTION2] [COLLECTION3] [COLLECTION4] [COLLECTION5]
 
 OPTIONS
   -f, --force
@@ -83,15 +87,16 @@ OPTIONS
   -n, --name=name  name to print
 
 EXAMPLE
-  $ api-chunk start <PROJECTNAME>
+  $ api-make start <PROJECTNAME>
   generates a project folder called <PROJECTNAME>
 ```
 
-_See code: [src/commands/start.ts](https://github.com/basiclaser/api-chunk/blob/v1.0.2/src/commands/start.ts)_
+_See code: [src/commands/start.ts](https://github.com/basiclaser/api-make/blob/v1.0.3/src/commands/start.ts)_
+
 <!-- commandsstop -->
 
 TODO: auth
-`api-chunk --auth`
+`api-make --auth`
 generates basic auth solution, user models, /register, /login, /logout, /profile routes and controllers
 
 generate
