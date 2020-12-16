@@ -24,10 +24,10 @@ const pkg = (name: string) => {
 };
 
 export default class Start extends Command {
-  static description = "generates an api-gen project";
+  static description = "generates an api_gen project";
 
   static examples = [
-    `$ api-gen start <PROJECTNAME>
+    `$ api_gen start <PROJECTNAME>
 generates a project folder called <PROJECTNAME>
 `,
   ];
@@ -44,7 +44,7 @@ generates a project folder called <PROJECTNAME>
 
   async generateProject(name: string) {
     this.log(
-      colors.green.underline(`🐦 api-gen making API project called "${name}"`)
+      colors.green.underline(`🐦 api_gen making API project called "${name}"`)
     );
     try {
       execSync(`mkdir ${name}`);
@@ -83,22 +83,11 @@ generates a project folder called <PROJECTNAME>
           console.log(`stderr: ${stderr}`);
         }
       );
-
-      // // install dependencies
-      // execSync(`cd ./${name} | npm install express mongoose cors colors`, {
-      //   stdio: [0, 1, 2], // we need this so node will print the command output
-      //   cwd: path.resolve(__dirname, ""), // path to where you want to save the file
-      // });
-
-      // execSync(`cd ./${name} | npm install -D nodemon`, {
-      //   stdio: [0, 1, 2], // we need this so node will print the command output
-      //   cwd: path.resolve(__dirname, ""), // path to where you want to save the file
-      // });
-      // console.log("New directory: " + process.cwd());
       console.log(
-        colors.green.underline(`🐦 api-gen API "${name}" setup complete`)
+        colors.green.underline(`🐦 api_gen API "${name}" setup complete`)
       );
       console.log(colors.green.underline(`🐦 cd ${name}`));
+      console.log(colors.green.underline(`🐦 npm run dev`));
       console.log(
         colors.red.underline(
           `🐦 ADD YOUR CONNECTION_URI TO .env TO CONNECT TO MONGODB`
@@ -109,15 +98,14 @@ generates a project folder called <PROJECTNAME>
           `🐦 AFTER EDITING .env, YOU'LL NEED TO RESTART THE API IF YOU ALREADY STARTED IT`
         )
       );
-      console.log(colors.green.underline(`🐦 npm run dev`));
     } catch (err) {
-      console.log("chdir: " + err);
+      console.log(err);
     }
   }
 
   async run() {
     const { args, flags } = this.parse(Start);
-    const name = process.argv[3] ?? "api-gen-project";
+    const name = process.argv[3] ?? "api_gen-project";
     this.generateProject(name);
     if (args.file && flags.force) {
       this.log(`you input --force and --file: ${args.file}`);
