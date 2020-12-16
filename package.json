@@ -1,12 +1,12 @@
 {
-  "name": "api-gen",
+  "name": "gen-api",
   "description": "🐦 make Express & Mongo MVC APIs, with easy-to-use example code.",
   "version": "0.0.0",
   "author": "Christopher Shelley @basiclaser",
   "bin": {
-    "api-gen": "./bin/run"
+    "gen-api": "./bin/run"
   },
-  "bugs": "https://github.com/basiclaser/api-gen/issues",
+  "bugs": "https://github.com/basiclaser/gen-api/issues",
   "dependencies": {
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
@@ -42,7 +42,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/basiclaser/api-gen",
+  "homepage": "https://github.com/basiclaser/gen-api",
   "keywords": [
     "oclif"
   ],
@@ -50,12 +50,12 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "api-gen",
+    "bin": "gen-api",
     "plugins": [
       "@oclif/plugin-help"
     ]
   },
-  "repository": "basiclaser/api-gen",
+  "repository": "basiclaser/gen-api",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",

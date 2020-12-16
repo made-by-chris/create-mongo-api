@@ -30,10 +30,10 @@ app.get("/", (req, res) => {
     ? req.session.requestCount + 1
     : 1;
   res.send(
-    `🐦 api-gen API running, ${
+    `🐦 gen-api API running, ${
       req.session.requestCount
     } requests made this session. 
-    
+
     ${listEndpoints(app)
       .map(
         (a) =>
@@ -47,7 +47,7 @@ app.get("/", (req, res) => {
   await connectDB();
   app.listen(PORT, () =>
     console.log(
-      colors.green.inverse(`🐦 api-gen API running at http://localhost:${PORT}`)
+      colors.green.inverse(`🐦 gen-api API running at http://localhost:${PORT}`)
     )
   );
 })();

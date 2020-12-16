@@ -104,5 +104,3 @@ TODO: postgreSQL
 TODO: generate from a RAML/YAML file
 
 TODO: loads of other things i'll never do
-
-[![a pigeon](https://pixahive.com/wp-content/uploads/2020/09/A-pigeon-near-a-water-pot-76068-pixahive.jpg)](https://pixahive.com/wp-content/uploads/2020/09/A-pigeon-near-a-water-pot-76068-pixahive.jpg)
