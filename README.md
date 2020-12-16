@@ -1,12 +1,12 @@
-# hack-api
+# api-chunk
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/hack-api.svg)](https://npmjs.org/package/hack-api)
-[![Downloads/week](https://img.shields.io/npm/dw/hack-api.svg)](https://npmjs.org/package/hack-api)
-[![License](https://img.shields.io/npm/l/hack-api.svg)](https://github.com/basiclaser/hack-api/blob/master/package.json)
+[![Version](https://img.shields.io/npm/v/api-chunk.svg)](https://npmjs.org/package/api-chunk)
+[![Downloads/week](https://img.shields.io/npm/dw/api-chunk.svg)](https://npmjs.org/package/api-chunk)
+[![License](https://img.shields.io/npm/l/api-chunk.svg)](https://github.com/basiclaser/api-chunk/blob/master/package.json)
 
 <!-- toc -->
-* [hack-api](#hack-api)
+* [api-chunk](#api-chunk)
 * [quickstart](#quickstart)
 * [Commands](#commands)
 <!-- tocstop -->
@@ -15,14 +15,14 @@
 
 <!-- usage -->
 ```sh-session
-$ npm install -g hack-api
-$ hack-api COMMAND
+$ npm install -g api-chunk
+$ api-chunk COMMAND
 running command...
-$ hack-api (-v|--version|version)
-hack-api/0.0.0 darwin-x64 node-v12.19.0
-$ hack-api --help [COMMAND]
+$ api-chunk (-v|--version|version)
+api-chunk/1.0.2 darwin-x64 node-v12.19.0
+$ api-chunk --help [COMMAND]
 USAGE
-  $ hack-api COMMAND
+  $ api-chunk COMMAND
 ...
 ```
 <!-- usagestop -->
@@ -30,37 +30,35 @@ USAGE
 # Commands
 
 <!-- commands -->
-* [`hack-api add [FILE]`](#hack-api-add-file)
-* [`hack-api help [COMMAND]`](#hack-api-help-command)
-* [`hack-api start [FILE]`](#hack-api-start-file)
+* [`api-chunk add [TYPE]`](#api-chunk-add-type)
+* [`api-chunk help [COMMAND]`](#api-chunk-help-command)
+* [`api-chunk start [PROJECTNAME]`](#api-chunk-start-projectname)
 
-## `hack-api add [FILE]`
+## `api-chunk add [TYPE]`
 
-generates an hack-api project
+generate new routes, controllers and a model by specifying a 'type'
 
 ```
 USAGE
-  $ hack-api add [FILE]
+  $ api-chunk add [TYPE]
 
-OPTIONS
-  -f, --force
-  -h, --help       show CLI help
-  -n, --name=name  name to print
+DESCRIPTION
+  eg. `api-chunk add event`
 
 EXAMPLE
-  $ hack-api start <PROJECTNAME>
-  generates a project folder called <PROJECTNAME>
+  $ api-chunk add message
+  generates a Message model with routes and controllers
 ```
 
-_See code: [src/commands/add.ts](https://github.com/basiclaser/hack-api/blob/v0.0.0/src/commands/add.ts)_
+_See code: [src/commands/add.ts](https://github.com/basiclaser/api-chunk/blob/v1.0.2/src/commands/add.ts)_
 
-## `hack-api help [COMMAND]`
+## `api-chunk help [COMMAND]`
 
-display help for hack-api
+display help for api-chunk
 
 ```
 USAGE
-  $ hack-api help [COMMAND]
+  $ api-chunk help [COMMAND]
 
 ARGUMENTS
   COMMAND  command to show help for
@@ -71,13 +69,13 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.1/src/commands/help.ts)_
 
-## `hack-api start [FILE]`
+## `api-chunk start [PROJECTNAME]`
 
-generates an hack-api project
+generates a blank api-chunk project
 
 ```
 USAGE
-  $ hack-api start [FILE]
+  $ api-chunk start [PROJECTNAME]
 
 OPTIONS
   -f, --force
@@ -85,16 +83,22 @@ OPTIONS
   -n, --name=name  name to print
 
 EXAMPLE
-  $ hack-api start <PROJECTNAME>
+  $ api-chunk start <PROJECTNAME>
   generates a project folder called <PROJECTNAME>
 ```
 
-_See code: [src/commands/start.ts](https://github.com/basiclaser/hack-api/blob/v0.0.0/src/commands/start.ts)_
+_See code: [src/commands/start.ts](https://github.com/basiclaser/api-chunk/blob/v1.0.2/src/commands/start.ts)_
 <!-- commandsstop -->
 
 TODO: auth
-`hack-api auth`
+`api-chunk --auth`
 generates basic auth solution, user models, /register, /login, /logout, /profile routes and controllers
+
+generate
+/register
+/login
+/logout
+/profile
 
 TODO: postgreSQL
 TODO: generate from a RAML/YAML file

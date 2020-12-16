@@ -1,21 +1,17 @@
 {
-  "name": "hack-api",
-  "description": "quickly make APIs with express, mongo and easy-to-use examples.",
-  "version": "1.0.0",
+  "name": "api-chunk",
+  "version": "1.0.2",
   "author": "Christopher Shelley @basiclaser",
   "bin": {
-    "hack-api": "./bin/run"
+    "api-chunk": "./bin/run"
   },
-  "bugs": "https://github.com/basiclaser/hack-api/issues",
+  "bugs": "https://github.com/basiclaser/api-chunk/issues",
   "dependencies": {
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
     "@oclif/plugin-help": "^3.2.1",
-    "cli-ux": "^5.5.1",
     "colors": "^1.4.0",
     "copy-dir": "^1.3.0",
-    "init-package-json": "^2.0.1",
-    "insert-line": "^1.1.0",
     "tslib": "^1.14.1"
   },
   "devDependencies": {
@@ -43,24 +39,25 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/basiclaser/hack-api",
+  "homepage": "https://github.com/basiclaser/api-chunk",
   "keywords": [
-    "express",
-    "mongoose",
-    "codegen",
     "api",
-    "oclif"
+    "generator",
+    "express",
+    "mongo",
+    "mvc",
+    "nodejs"
   ],
   "license": "MIT",
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "hack-api",
+    "bin": "api-chunk",
     "plugins": [
       "@oclif/plugin-help"
     ]
   },
-  "repository": "basiclaser/hack-api",
+  "repository": "basiclaser/api-chunk",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",

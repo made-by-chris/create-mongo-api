@@ -5,6 +5,7 @@ const { execSync, exec } = require("child_process");
 import { writeFileSync, appendFileSync } from "fs";
 var copydir = require("copy-dir");
 import cli from "cli-ux";
+import createTypes from "../utils/create-types";
 
 const pkg = (name: string) => {
   return `
@@ -25,10 +26,10 @@ const pkg = (name: string) => {
 };
 
 export default class Start extends Command {
-  static description = "generates an hack-api project";
+  static description = "generates a blank api-chunk project";
 
   static examples = [
-    `$ hack-api start <PROJECTNAME>
+    `$ api-chunk start <PROJECTNAME>
 generates a project folder called <PROJECTNAME>
 `,
   ];
@@ -41,11 +42,21 @@ generates a project folder called <PROJECTNAME>
     force: flags.boolean({ char: "f" }),
   };
 
-  static args = [{ name: "file" }];
+  static args = [
+    { name: "projectname" },
+    { name: "collection1" },
+    { name: "collection2" },
+    { name: "collection3" },
+    { name: "collection4" },
+    { name: "collection5" },
+  ];
 
-  async generateProject(name: string) {
+  async generateProject() {
+    const { args } = this.parse(Start);
+    const name = args.projectname || "api-chunk-project";
+
     this.log(
-      colors.green.underline(`hack-api making API project called "${name}"`)
+      colors.green.underline(`api-chunk making API project called "${name}"`)
     );
     try {
       execSync(`mkdir ${name}`);
@@ -63,12 +74,10 @@ generates a project folder called <PROJECTNAME>
       );
 
       writeFileSync(`./${name}/package.json`, pkg(name));
-      // create base files
-      // copyFolderRecursiveSync("./templates/start", `${name}`);
       copydir.sync("./templates/start", `${name}`);
-
       appendFileSync(`${name}/.env`, `CONNECTION_URI=${uri}`);
       process.chdir(`./${name}`);
+
       execSync(
         `npm install express mongoose cors colors express-list-endpoints`,
         (error: Error, stdout: string, stderr: Error) => {
@@ -92,7 +101,8 @@ generates a project folder called <PROJECTNAME>
           console.log(`stderr: ${stderr}`);
         }
       );
-      console.log(colors.green.underline(`hack-api "${name}" setup complete`));
+      await createTypes(args);
+      console.log(colors.green.underline(`api-chunk "${name}" setup complete`));
       console.log(colors.green.inverse(`cd ${name}`));
       console.log(colors.green.inverse(`npm run dev`));
     } catch (err) {
@@ -101,11 +111,6 @@ generates a project folder called <PROJECTNAME>
   }
 
   async run() {
-    const { args, flags } = this.parse(Start);
-    const name = process.argv[3] ?? "hack-api-project";
-    this.generateProject(name);
-    if (args.file && flags.force) {
-      this.log(`you input --force and --file: ${args.file}`);
-    }
+    this.generateProject();
   }
 }
