@@ -2,8 +2,9 @@ import { Command, flags } from "@oclif/command";
 var path = require("path");
 var colors = require("colors/safe");
 const { execSync, exec } = require("child_process");
-import { writeFileSync } from "fs";
+import { writeFileSync, appendFileSync } from "fs";
 var copydir = require("copy-dir");
+import cli from "cli-ux";
 
 const pkg = (name: string) => {
   return `
@@ -54,10 +55,19 @@ generates a project folder called <PROJECTNAME>
       );
     }
     try {
+      const uri = await cli.prompt(
+        colors.green.inverse(
+          "What is your mongodb CONNECTION_URI? (from atlas website. make sure to add your username, password and dbname.)"
+        ),
+        { type: "hide" }
+      );
+
       writeFileSync(`./${name}/package.json`, pkg(name));
       // create base files
       // copyFolderRecursiveSync("./templates/start", `${name}`);
       copydir.sync("./templates/start", `${name}`);
+
+      appendFileSync(`${name}/.env`, `CONNECTION_URI=${uri}`);
       process.chdir(`./${name}`);
       execSync(
         `npm install express mongoose cors colors express-list-endpoints`,
@@ -82,21 +92,9 @@ generates a project folder called <PROJECTNAME>
           console.log(`stderr: ${stderr}`);
         }
       );
-      console.log(
-        colors.green.underline(`hack-api API "${name}" setup complete`)
-      );
-      console.log(colors.green.underline(`cd ${name}`));
-      console.log(colors.green.underline(`npm run dev`));
-      console.log(
-        colors.green.inverse(
-          `ADD YOUR CONNECTION_URI TO .env TO CONNECT TO MONGODB`
-        )
-      );
-      console.log(
-        colors.green.inverse(
-          `AFTER EDITING .env, YOU'LL NEED TO RESTART THE API IF YOU ALREADY STARTED IT`
-        )
-      );
+      console.log(colors.green.underline(`hack-api "${name}" setup complete`));
+      console.log(colors.green.inverse(`cd ${name}`));
+      console.log(colors.green.inverse(`npm run dev`));
     } catch (err) {
       console.log(err);
     }
