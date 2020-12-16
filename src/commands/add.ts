@@ -82,10 +82,10 @@ const modelExport = (type: string) => {
   return `exports.${type} = ${type};`;
 };
 export default class Add extends Command {
-  static description = "generates an gen-api project";
+  static description = "generates an hack-api project";
 
   static examples = [
-    `$ gen-api start <PROJECTNAME>
+    `$ hack-api start <PROJECTNAME>
 generates a project folder called <PROJECTNAME>
 `,
   ];
@@ -108,14 +108,14 @@ generates a project folder called <PROJECTNAME>
     if (!type) {
       return console.log(
         colors.red.underline(
-          `🐦 you need to provide a type name eg. Product, Message, Task, Event, User, Group etc.`
+          `you need to provide a type name eg. Product, Message, Task, Event, User, Group etc.`
         )
       );
     }
 
     this.log(
       colors.green.underline(
-        `🐦 gen-api adding new "${type}" imports and routes to index.js`
+        `hack-api adding new "${type}" imports and routes to index.js`
       )
     );
     try {
@@ -152,7 +152,7 @@ generates a project folder called <PROJECTNAME>
 
     this.log(
       colors.green.underline(
-        `🐦 gen-api adding new controllers to controllers/${type}.js`
+        `hack-api adding new controllers to controllers/${type}.js`
       )
     );
     try {
@@ -166,7 +166,7 @@ generates a project folder called <PROJECTNAME>
 
     this.log(
       colors.green.underline(
-        `🐦 gen-api adding new model to models/${type}.js and models/index.js`
+        `hack-api adding new model to models/${type}.js and models/index.js`
       )
     );
 

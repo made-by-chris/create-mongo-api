@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "noImplicitAny": false,
     "declaration": true,
     "importHelpers": true,
     "module": "commonjs",
