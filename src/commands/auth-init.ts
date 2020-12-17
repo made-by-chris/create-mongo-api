@@ -2,10 +2,8 @@ import { Command, flags } from "@oclif/command";
 var colors = require("colors/safe");
 const { execSync } = require("child_process");
 import { writeFileSync, appendFileSync } from "fs";
-var copydir = require("copy-dir");
 import cli from "cli-ux";
 import createTypes from "../utils/create-types";
-const initialFiles = "./src/templates/auth-init";
 
 const pkg = (name: string) => {
   return `
@@ -26,7 +24,8 @@ const pkg = (name: string) => {
 };
 
 export default class Init extends Command {
-  static description = "generates a blank api-make project";
+  static description =
+    "generates an api-make project with authentication functionality";
 
   static examples = [
     `$ api-make init <PROJECTNAME>
@@ -51,21 +50,22 @@ generates a project folder called <PROJECTNAME>
     { name: "collection5" },
   ];
 
-  async generateProject() {
+  async run() {
     const { args } = this.parse(Init);
     const name = args.projectname || "api-make-project";
 
     this.log(
       colors.green.underline(`api-make making API project called "${name}"`)
     );
-    try {
-      const uri = await cli.prompt(
-        colors.green.inverse(
-          "What do you want the collection for auth to be called? (default is user - maybe you want customer, admin, friend, subject?)"
-        ),
-        { default: "user" }
-      );
-    } catch (error) {}
+
+    // try {
+    //   const uri = await cli.prompt(
+    //     colors.green.inverse(
+    //       "What do you want the collection for auth to be called? (default is user - maybe you want customer, admin, friend, subject?)"
+    //     ),
+    //     { default: "user" }
+    //   );
+    // } catch (error) {}
 
     try {
       const uri = await cli.prompt(
@@ -75,19 +75,20 @@ generates a project folder called <PROJECTNAME>
         { type: "hide" }
       );
 
-      try {
-        execSync(`mkdir ${name}`);
-      } catch (error) {
-        return console.log(
-          `folder already exists or something, try a different project name`
-        );
-      }
-
+      execSync(
+        `degit https://github.com/basiclaser/api-make-templates/auth-init ${name}`,
+        (error: Error, stdout: string, stderr: Error) => {
+          if (error) {
+            console.error(`exec error: ${error}`);
+            return;
+          }
+          console.log(`stdout: ${stdout}`);
+          console.log(`stderr: ${stderr}`);
+        }
+      );
       writeFileSync(`./${name}/package.json`, pkg(name));
-      copydir.sync(initialFiles, `${name}`);
-      appendFileSync(`${name}/.env`, `CONNECTION_URI=${uri}`);
+      appendFileSync(`./${name}/.env`, `CONNECTION_URI=${uri}`);
       process.chdir(`./${name}`);
-
       execSync(
         `npm install express mongoose cors colors express-list-endpoints bcrypt`,
         (error: Error, stdout: string, stderr: Error) => {
@@ -99,7 +100,6 @@ generates a project folder called <PROJECTNAME>
           console.log(`stderr: ${stderr}`);
         }
       );
-
       execSync(
         `npm install -D nodemon`,
         (error: Error, stdout: string, stderr: Error) => {
@@ -118,9 +118,5 @@ generates a project folder called <PROJECTNAME>
     } catch (err) {
       console.log(err);
     }
-  }
-
-  async run() {
-    this.generateProject();
   }
 }

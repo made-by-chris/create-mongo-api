@@ -1,6 +1,6 @@
 {
   "name": "api-make",
-  "version": "1.0.6666",
+  "version": "1.0.668",
   "author": "Christopher Shelley @basiclaser",
   "bin": {
     "api-make": "./bin/run"
@@ -13,6 +13,7 @@
     "cli-ux": "^5.5.1",
     "colors": "^1.4.0",
     "copy-dir": "^1.3.0",
+    "degit": "^2.8.0",
     "tslib": "^1.14.1"
   },
   "devDependencies": {
