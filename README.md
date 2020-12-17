@@ -9,7 +9,11 @@
 
 @@@ basic steps @@@
 
-initialise an api called "myProject":
+initialise an api with login & auth routes called "myProject":
+
+`npx api-make auth-init myProject`
+
+OR initialise an api with no auth routes called "myProject":
 
 `npx api-make init myProject`
 
@@ -21,11 +25,9 @@ generate Message, Product and Review models, routes and controllers just like th
 
 `npx api-make add message product review`
 
-## expiremental features coming next
+## experimental features coming next
 
-add authentication register, login, logout, profile routes with password hashing and sessions, with a new User model.
-
-`npx api-make auth user`
+### maybe write some tests
 
 generate a project from YAML
 
