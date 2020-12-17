@@ -25,9 +25,9 @@ go into the new project folder:
 
 `cd myProject`
 
-generate Message, Product and Review models, routes and controllers just like this!
+generate Group, Event, Message models, routes and controllers just like this!
 
-`npx api-make add message product review`
+`npx api-make add group event message`
 
 ## experimental features coming next
 
