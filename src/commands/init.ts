@@ -6,6 +6,7 @@ import { writeFileSync, appendFileSync } from "fs";
 var copydir = require("copy-dir");
 import cli from "cli-ux";
 import createTypes from "../utils/create-types";
+const initialFiles = "./src/templates/init";
 
 const pkg = (name: string) => {
   return `
@@ -74,7 +75,7 @@ generates a project folder called <PROJECTNAME>
       );
 
       writeFileSync(`./${name}/package.json`, pkg(name));
-      copydir.sync("./templates/start", `${name}`);
+      copydir.sync(initialFiles, `${name}`);
       appendFileSync(`${name}/.env`, `CONNECTION_URI=${uri}`);
       process.chdir(`./${name}`);
 

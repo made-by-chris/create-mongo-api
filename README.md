@@ -5,6 +5,10 @@
 [![Downloads/week](https://img.shields.io/badge/-i%20have%20no%20idea%20what%20im%20doing-success)](https://npmjs.org/package/api-make)
 [![License](https://img.shields.io/npm/l/api-make.svg)](https://github.com/basiclaser/api-make/blob/master/package.json)
 
+### api-make is a command-line tool that helps you create APIs quickly, with helpful starter code in each route, controller and model. api-make is designed to be beginner friendly, without overly abstract code, so you can see all your routes in the index.js. It also sets up your connection to your mongoDB atlas cluster.
+
+@@@ basic steps @@@
+
 initialise an api called "myProject":
 
 `npx api-make init myProject`
