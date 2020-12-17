@@ -1,9 +1,25 @@
 # api-make
 
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+[![oclif](https://img.shields.io/badge/lol-there%20are%20no%20tests-red.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/api-make.svg)](https://npmjs.org/package/api-make)
-[![Downloads/week](https://img.shields.io/npm/dw/api-make.svg)](https://npmjs.org/package/api-make)
+[![Downloads/week](https://img.shields.io/badge/-i%20have%20no%20idea%20what%20im%20doing-success)](https://npmjs.org/package/api-make)
 [![License](https://img.shields.io/npm/l/api-make.svg)](https://github.com/basiclaser/api-make/blob/master/package.json)
+
+initialise an api called "myProject":
+
+`npx api-make init myProject`
+
+go into the new project folder:
+
+`cd myProject`
+
+generate Message, Product and Review models, routes and controllers just like this!
+
+`npx api-make add message product review`
+
+add authentication register, login, logout, profile routes with password hashing and sessions, with a new User model.
+
+`npx api-make auth user`
 
 <!-- toc -->
 
@@ -36,7 +52,7 @@ USAGE
 
 - [`api-make add [COLLECTION1] [COLLECTION2] [COLLECTION3] [COLLECTION4] [COLLECTION5]`](#api-make-add-collection1-collection2-collection3-collection4-collection5)
 - [`api-make help [COMMAND]`](#api-make-help-command)
-- [`api-make start [PROJECTNAME] [COLLECTION1] [COLLECTION2] [COLLECTION3] [COLLECTION4] [COLLECTION5]`](#api-make-start-projectname-collection1-collection2-collection3-collection4-collection5)
+- [`api-make init [PROJECTNAME] [COLLECTION1] [COLLECTION2] [COLLECTION3] [COLLECTION4] [COLLECTION5]`](#api-make-init-projectname-collection1-collection2-collection3-collection4-collection5)
 
 ## `api-make add [COLLECTION1] [COLLECTION2] [COLLECTION3] [COLLECTION4] [COLLECTION5]`
 
@@ -73,13 +89,13 @@ OPTIONS
 
 _See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.1/src/commands/help.ts)_
 
-## `api-make start [PROJECTNAME] [COLLECTION1] [COLLECTION2] [COLLECTION3] [COLLECTION4] [COLLECTION5]`
+## `api-make init [PROJECTNAME] [COLLECTION1] [COLLECTION2] [COLLECTION3] [COLLECTION4] [COLLECTION5]`
 
 generates a blank api-make project
 
 ```
 USAGE
-  $ api-make start [PROJECTNAME] [COLLECTION1] [COLLECTION2] [COLLECTION3] [COLLECTION4] [COLLECTION5]
+  $ api-make init [PROJECTNAME] [COLLECTION1] [COLLECTION2] [COLLECTION3] [COLLECTION4] [COLLECTION5]
 
 OPTIONS
   -f, --force
@@ -87,11 +103,11 @@ OPTIONS
   -n, --name=name  name to print
 
 EXAMPLE
-  $ api-make start <PROJECTNAME>
+  $ api-make init <PROJECTNAME>
   generates a project folder called <PROJECTNAME>
 ```
 
-_See code: [src/commands/start.ts](https://github.com/basiclaser/api-make/blob/v1.0.3/src/commands/start.ts)_
+_See code: [src/commands/init.ts](https://github.com/basiclaser/api-make/blob/v1.0.3/src/commands/init.ts)_
 
 <!-- commandsstop -->
 

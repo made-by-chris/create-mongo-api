@@ -1,5 +1,6 @@
 var colors = require("colors/safe");
 import { readFileSync, writeFileSync } from "fs";
+import { type } from "os";
 
 const imports = (type: string) => {
   return `const {getAll${type}s, get${type}ById, create${type}, update${type}, delete${type}} = require("./controllers/${type}")`;
@@ -193,7 +194,7 @@ const createTypes = async (args: Record<string, any>) => {
     .filter((key) => key !== "projectname")
     .filter((key) => args[key])
     .map((key) => args[key]);
-  createTypeRecursive(typesToMake);
+  typesToMake.length && createTypeRecursive(typesToMake);
 };
 
 export default createTypes;
