@@ -13,9 +13,13 @@ initialise an api with login & auth routes called "myProject":
 
 `npx api-make auth-init myProject`
 
-OR initialise an api with no auth routes called "myProject":
+OR initialise an api _without_ auth routes called "myProject":
 
 `npx api-make init myProject`
+
+OR initialise an api called "myProject" with a bunch of predefined collections for Product,Review and Category:
+
+`npx api-make init myProject product review category`
 
 go into the new project folder:
 
