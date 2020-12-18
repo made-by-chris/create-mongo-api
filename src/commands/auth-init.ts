@@ -74,9 +74,8 @@ generates a project folder called <PROJECTNAME>
         ),
         { type: "hide" }
       );
-
       execSync(
-        `degit https://github.com/basiclaser/api-make-templates/auth-init ${name}`,
+        `npx degit https://github.com/basiclaser/api-make-templates/auth-init ${name}`,
         (error: Error, stdout: string, stderr: Error) => {
           if (error) {
             console.error(`exec error: ${error}`);
@@ -90,7 +89,7 @@ generates a project folder called <PROJECTNAME>
       appendFileSync(`./${name}/.env`, `CONNECTION_URI=${uri}`);
       process.chdir(`./${name}`);
       execSync(
-        `npm install express mongoose cors colors express-list-endpoints bcrypt`,
+        `npm install express mongoose cors colors express-list-endpoints bcrypt dotenv cookie-parser express-session`,
         (error: Error, stdout: string, stderr: Error) => {
           if (error) {
             console.error(`exec error: ${error}`);

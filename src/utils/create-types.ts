@@ -1,6 +1,6 @@
-var colors = require("colors/safe");
-import { readFileSync, writeFileSync } from "fs";
-import { type } from "os";
+const colors = require("colors/safe");
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
+import log from "./log";
 
 const imports = (type: string) => {
   return `const {getAll${type}s, get${type}ById, create${type}, update${type}, delete${type}} = require("./controllers/${type}")`;
@@ -92,11 +92,7 @@ const createTypeRecursive = async (remaining: Array<string>) => {
     );
   }
 
-  console.log(
-    colors.green.underline(
-      `api-make adding new "${type}" imports and routes to index.js`
-    )
-  );
+  log(`index.js`, `updated`);
   try {
     const sourceIndexFile = readFileSync("./index.js", {
       encoding: "utf8",
@@ -115,7 +111,7 @@ const createTypeRecursive = async (remaining: Array<string>) => {
 
     if (lastImport) {
       importTargetIndex = sourceIndexFile.split("\n").indexOf(lastImport);
-      updatedFileAsArray.splice(importTargetIndex, 0, imports(type));
+      updatedFileAsArray.splice(importTargetIndex + 1, 0, imports(type));
     }
 
     // inject routes
@@ -128,26 +124,29 @@ const createTypeRecursive = async (remaining: Array<string>) => {
     console.log(colors.red.inverse("FAIL"));
     console.log(colors.red.underline("failed to update index.js file"));
   }
+  log(`controllers/${type}.js`, `created`);
+  try {
+    if (!existsSync("./controllers")) {
+      mkdirSync("./controllers");
+    }
+  } catch (error) {
+    console.log(error);
+    console.log(colors.red.inverse("FAIL"));
+    console.log(colors.red.underline("failed to create controllers folder"));
+  }
 
-  console.log(
-    colors.green.underline(
-      `api-make adding new controllers to controllers/${type}.js`
-    )
-  );
   try {
     writeFileSync(`./controllers/${type}.js`, controllerFile(type));
   } catch (error) {
+    console.log(error);
     console.log(colors.red.inverse("FAIL"));
     console.log(
       colors.red.underline("failed to create controllers/${type}.js")
     );
   }
 
-  console.log(
-    colors.green.underline(
-      `api-make adding new model to models/${type}.js and models/index.js`
-    )
-  );
+  log(`models/${type}.js`, `created`);
+  log(`models/index.js`, `updated`);
 
   try {
     writeFileSync(`./models/${type}.js`, modelFile(type));
@@ -190,11 +189,23 @@ const createTypeRecursive = async (remaining: Array<string>) => {
 };
 
 const createTypes = async (args: Record<string, any>) => {
-  const typesToMake = Object.keys(args)
-    .filter((key) => key !== "projectname")
-    .filter((key) => args[key])
-    .map((key) => args[key]);
-  typesToMake.length && createTypeRecursive(typesToMake);
+  try {
+    if (existsSync("./package.json")) {
+      const typesToMake = Object.keys(args)
+        .filter((key) => key !== "projectname")
+        .filter((key) => args[key])
+        .map((key) => args[key]);
+      typesToMake.length && createTypeRecursive(typesToMake);
+    } else {
+      throw new Error(
+        "Are you sure you're in a project folder? Please run the add command in a folder with a package.json"
+      );
+    }
+  } catch (error) {
+    console.log(colors.red.inverse("FAIL"));
+    console.log(colors.red.underline(error.message));
+    console.log(colors.red(`( You're here: ${__dirname})`));
+  }
 };
 
 export default createTypes;

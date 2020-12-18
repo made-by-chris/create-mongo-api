@@ -1,6 +1,6 @@
 {
   "name": "api-make",
-  "version": "1.0.668",
+  "version": "1.0.679",
   "author": "Christopher Shelley @basiclaser",
   "bin": {
     "api-make": "./bin/run"

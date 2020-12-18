@@ -2,7 +2,6 @@ import { Command, flags } from "@oclif/command";
 var colors = require("colors/safe");
 const { execSync } = require("child_process");
 import { writeFileSync, appendFileSync } from "fs";
-var copydir = require("copy-dir");
 import cli from "cli-ux";
 import createTypes from "../utils/create-types";
 
@@ -64,16 +63,15 @@ generates a project folder called <PROJECTNAME>
         ),
         { type: "hide" }
       );
-
       execSync(
-        `degit https://github.com/basiclaser/api-make-templates/init ${name}`
+        `npx degit https://github.com/basiclaser/api-make-templates/init ${name}`
       );
       writeFileSync(`./${name}/package.json`, pkg(name));
       appendFileSync(`${name}/.env`, `CONNECTION_URI=${uri}`);
       process.chdir(`./${name}`);
 
       execSync(
-        `npm install express mongoose cors colors express-list-endpoints`,
+        `npm install express mongoose cors colors express-list-endpoints dotenv`,
         (error: Error, stdout: string, stderr: Error) => {
           if (error) {
             console.error(`exec error: ${error}`);
