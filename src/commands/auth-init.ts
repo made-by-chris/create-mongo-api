@@ -25,10 +25,10 @@ const pkg = (name: string) => {
 
 export default class Init extends Command {
   static description =
-    "generates an api-make project with authentication functionality";
+    "generates an make-api project with authentication functionality";
 
   static examples = [
-    `$ api-make init <PROJECTNAME>
+    `$ make-api init <PROJECTNAME>
 generates a project folder called <PROJECTNAME>
 `,
   ];
@@ -52,10 +52,10 @@ generates a project folder called <PROJECTNAME>
 
   async run() {
     const { args } = this.parse(Init);
-    const name = args.projectname || "api-make-project";
+    const name = args.projectname || "make-api-project";
 
     this.log(
-      colors.green.underline(`api-make making API project called "${name}"`)
+      colors.green.underline(`make-api making API project called "${name}"`)
     );
 
     // try {
@@ -70,9 +70,9 @@ generates a project folder called <PROJECTNAME>
     try {
       const uri = await cli.prompt(
         colors.green.inverse(
-          "What is your mongodb CONNECTION_URI? (from atlas website. make sure to add your username, password and dbname.)"
+          `What is your mongodb CONNECTION_URI(eg. from https://cloud.mongodb.com/)?  
+make sure to add your username, password and dbname to the URI.`
         ),
-        { type: "hide" }
       );
       execSync(
         `npx degit https://github.com/basiclaser/api-make-templates/auth-init ${name}`,
@@ -111,7 +111,7 @@ generates a project folder called <PROJECTNAME>
         }
       );
       await createTypes(args);
-      console.log(colors.green.underline(`api-make "${name}" setup complete`));
+      console.log(colors.green.underline(`make-api "${name}" setup complete`));
       console.log(colors.green.inverse(`cd ${name}`));
       console.log(colors.green.inverse(`npm run dev`));
     } catch (err) {

@@ -1,11 +1,11 @@
 {
-  "name": "api-make",
-  "version": "1.0.679",
+  "name": "make-api",
+  "version": "1.0.68",
   "author": "Christopher Shelley @basiclaser",
   "bin": {
-    "api-make": "./bin/run"
+    "make-api": "./bin/run"
   },
-  "bugs": "https://github.com/basiclaser/api-make/issues",
+  "bugs": "https://github.com/basiclaser/make-api/issues",
   "dependencies": {
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
@@ -41,7 +41,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/basiclaser/api-make",
+  "homepage": "https://github.com/basiclaser/make-api",
   "keywords": [
     "api",
     "generator",
@@ -54,12 +54,12 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "api-make",
+    "bin": "make-api",
     "plugins": [
       "@oclif/plugin-help"
     ]
   },
-  "repository": "basiclaser/api-make",
+  "repository": "basiclaser/make-api",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",

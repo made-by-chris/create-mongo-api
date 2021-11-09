@@ -5,10 +5,10 @@ import createTypes from "../utils/create-types";
 
 export default class Add extends Command {
   static description = `generate new routes, controllers and a model by specifying a 'type'
-eg. \`api-make add event\``;
+eg. \`make-api add event\``;
 
   static examples = [
-    `$ api-make add message
+    `$ make-api add message
 generates a Message model with routes and controllers
 `,
   ];

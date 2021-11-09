@@ -1,7 +1,7 @@
 const colors = require("colors/safe");
 const log = (file: string, action: string) => {
   console.log(
-    `${colors.green.inverse(`api-make`)} 
+    `${colors.green.inverse(`make-api`)} 
     ${colors.green.underline(file)}
     ${colors.green(action)}
     `
