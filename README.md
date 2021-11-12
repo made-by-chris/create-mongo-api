@@ -1,46 +1,38 @@
-# make-api
+# make-mongo-api
 
-[![oclif](https://img.shields.io/badge/lol-there%20are%20no%20tests-red.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/make-api.svg)](https://npmjs.org/package/make-api)
-[![Downloads/week](https://img.shields.io/badge/-i%20have%20no%20idea%20what%20im%20doing-success)](https://npmjs.org/package/make-api)
-[![License](https://img.shields.io/npm/l/make-api.svg)](https://github.com/basiclaser/make-api/blob/master/package.json)
+TL;DR `npx make-mongo-api auth-init REPLACE_THIS_WITH_YOUR_PROJECT_NAME message product`
 
-<span style="color:red">this is a 2-day old WIP, and may not work for you :) please report bugs on the github. I wasn't expecting any downloads from people other than my students! :D</span>
-
-make-api is a command-line tool that helps you create APIs quickly, with helpful starter code in each route, controller and model. make-api is designed to be beginner friendly, without overly abstract code, so you can see all your routes in the index.js. It also sets up your connection to your mongoDB atlas cluster.
+for an API with messages, users and products.
+(run this command in your general projects folder, the command will generate its own project folder, you don't need to make one.)
 
 ---
 
-## **basic steps**
+make-mongo-api is a command-line tool that helps you create APIs quickly, with helpful starter code in each route, controller and model.
 
-initialise an api with login & auth routes called "myProject":
+This should complement nicely for example a frontend application made with [create-react-app](https://www.npmjs.com/package/create-react-app), but can be used with any frontend really.
 
-`npx make-api auth-init myProject`
+make-mongo-api is designed to be beginner friendly, without overly abstract code or project structure. It also sets up your connection to your mongoDB atlas cluster. Get that ready by creating a free project [here](https://www.mongodb.com/cloud/atlas/register), clicking "connect" then "connect your application". Copy the connecting string, replacing `<password>` (including the <>) with your actual password.
 
-OR initialise an api _without_ auth routes called "myProject":
+---
 
-`npx make-api init myProject`
+## **Usage Examples**
 
-OR initialise an api called "myProject" with a bunch of predefined collections for Product, Review and Category:
+initialise an api with login & auth routes
 
-`npx make-api init myProject product review category`
+`npx make-mongo-api auth-init REPLACE_THIS_WITH_YOUR_PROJECT_NAME`
+
+OR initialise an api _without_ auth routes
+
+`npx make-mongo-api init REPLACE_THIS_WITH_YOUR_PROJECT_NAME`
+
+OR initialise an api with a bunch of predefined collections for Product, Review and Category:
+
+`npx make-mongo-api init REPLACE_THIS_WITH_YOUR_PROJECT_NAME product review category`
 
 go into the new project folder:
 
-`cd myProject`
+`cd REPLACE_THIS_WITH_YOUR_PROJECT_NAME`
 
 generate Group, Event, Message models, routes and controllers just like this!
 
-`npx make-api add group event message`
-
-## experimental features coming next
-
-### maybe write some tests
-
-generate a project from YAML
-
-`npx make-api YAML <path-to-file>`
-
-You can even try to generate a whole project based on a dbdiagram.io link!
-
-`npx make-api dbdiagram <url>`
+`npx make-mongo-api add group event message`

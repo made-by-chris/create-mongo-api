@@ -25,10 +25,10 @@ const pkg = (name: string) => {
 
 export default class Init extends Command {
   static description =
-    "generates an make-api project with authentication functionality";
+    "generates a make-mongo-api project with authentication functionality";
 
   static examples = [
-    `$ make-api init <PROJECTNAME>
+    `$ make-mongo-api init <PROJECTNAME>
 generates a project folder called <PROJECTNAME>
 `,
   ];
@@ -52,10 +52,10 @@ generates a project folder called <PROJECTNAME>
 
   async run() {
     const { args } = this.parse(Init);
-    const name = args.projectname || "make-api-project";
+    const name = args.projectname || "make-mongo-api-project";
 
     this.log(
-      colors.green.underline(`make-api making API project called "${name}"`)
+      colors.green.underline(`make-mongo-api making API project called "${name}"`)
     );
 
     // try {
@@ -70,12 +70,12 @@ generates a project folder called <PROJECTNAME>
     try {
       const uri = await cli.prompt(
         colors.green.inverse(
-          `What is your mongodb CONNECTION_URI(eg. from https://cloud.mongodb.com/)?  
+          `What is your mongodb CONNECTION_URI(eg. from https://cloud.mongodb.com/)?
 make sure to add your username, password and dbname to the URI.`
         ),
       );
       execSync(
-        `npx degit https://github.com/basiclaser/api-make-templates/auth-init ${name}`,
+        `npx degit https://github.com/basiclaser/make-mongo-api-templates/auth-init ${name}`,
         (error: Error, stdout: string, stderr: Error) => {
           if (error) {
             console.error(`exec error: ${error}`);
@@ -111,7 +111,7 @@ make sure to add your username, password and dbname to the URI.`
         }
       );
       await createTypes(args);
-      console.log(colors.green.underline(`make-api "${name}" setup complete`));
+      console.log(colors.green.underline(`make-mongo-api "${name}" setup complete`));
       console.log(colors.green.inverse(`cd ${name}`));
       console.log(colors.green.inverse(`npm run dev`));
     } catch (err) {
