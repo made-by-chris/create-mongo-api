@@ -5,10 +5,10 @@ import createTypes from "../utils/create-types";
 
 export default class Add extends Command {
   static description = `generate new routes, controllers and a model by specifying a 'type'
-eg. \`make-mongo-api add event\``;
+eg. \`create-mongo-api add event\``;
 
   static examples = [
-    `$ make-mongo-api add message
+    `$ create-mongo-api add message
 generates a Message model with routes and controllers
 `,
   ];

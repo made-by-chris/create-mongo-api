@@ -24,10 +24,10 @@ const pkg = (name: string) => {
 };
 
 export default class Init extends Command {
-  static description = "generates a make-mongo-api project";
+  static description = "generates a create-mongo-api project";
 
   static examples = [
-    `$ make-mongo-api init <PROJECTNAME>
+    `$ create-mongo-api init <PROJECTNAME>
 generates a project folder called <PROJECTNAME>
 `,
   ];
@@ -51,10 +51,10 @@ generates a project folder called <PROJECTNAME>
 
   async run() {
     const { args } = this.parse(Init);
-    const name = args.projectname || "make-mongo-api-project";
+    const name = args.projectname || "create-mongo-api-project";
 
     this.log(
-      colors.green.underline(`make-mongo-api making API project called "${name}"`)
+      colors.green.underline(`create-mongo-api making API project called "${name}"`)
     );
     try {
       const uri = await cli.prompt(
@@ -64,7 +64,7 @@ make sure to add your username, password and dbname to the URI.`
         ),
       );
       execSync(
-        `npx degit https://github.com/basiclaser/make-mongo-api-templates/init ${name}`
+        `npx degit https://github.com/basiclaser/create-mongo-api-templates/init ${name}`
       );
       writeFileSync(`./${name}/package.json`, pkg(name));
       appendFileSync(`${name}/.env`, `CONNECTION_URI=${uri}`);
@@ -94,7 +94,7 @@ make sure to add your username, password and dbname to the URI.`
         }
       );
       await createTypes(args);
-      console.log(colors.green.underline(`make-mongo-api "${name}" setup complete`));
+      console.log(colors.green.underline(`create-mongo-api "${name}" setup complete`));
       console.log(colors.green.inverse(`cd ${name}`));
       console.log(colors.green.inverse(`npm run dev`));
     } catch (err) {

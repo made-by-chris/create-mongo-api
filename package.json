@@ -1,11 +1,11 @@
 {
-  "name": "make-mongo-api",
+  "name": "create-mongo-api",
   "version": "1.0.69",
   "author": "Christopher Shelley @basiclaser",
   "bin": {
-    "make-mongo-api": "./bin/run"
+    "create-mongo-api": "./bin/run"
   },
-  "bugs": "https://github.com/basiclaser/make-mongo-api/issues",
+  "bugs": "https://github.com/basiclaser/create-mongo-api/issues",
   "dependencies": {
     "@oclif/command": "^1.8.0",
     "@oclif/config": "^1.17.0",
@@ -41,7 +41,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/basiclaser/make-mongo-api",
+  "homepage": "https://github.com/basiclaser/create-mongo-api",
   "keywords": [
     "api",
     "generator",
@@ -54,12 +54,12 @@
   "main": "lib/index.js",
   "oclif": {
     "commands": "./lib/commands",
-    "bin": "make-mongo-api",
+    "bin": "create-mongo-api",
     "plugins": [
       "@oclif/plugin-help"
     ]
   },
-  "repository": "basiclaser/make-mongo-api",
+  "repository": "basiclaser/create-mongo-api",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "posttest": "eslint . --ext .ts --config .eslintrc",
